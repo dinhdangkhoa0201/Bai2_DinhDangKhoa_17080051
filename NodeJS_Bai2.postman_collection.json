@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "488e1257-5019-4d9b-8669-dd32418d3940",
+		"name": "NodeJS_Bai2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products"
+					]
+				},
+				"description": "Lấy danh sách sản phẩm"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/products/addProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "tensanpham",
+							"value": "TV",
+							"type": "text"
+						},
+						{
+							"key": "gia",
+							"value": "4000000",
+							"type": "text"
+						},
+						{
+							"key": "soluong",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "hinhanh",
+							"value": "https://bizweb.dktcdn.net/100/365/174/products/vn-full-hd-t6000-ua43t6000akxxv-frontblack-219311945-pd-gallery-l-jpg.jpg?v=1596294570450",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/products/addProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"addProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/products/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/products/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"2"
+					]
+				},
+				"description": "Xoá sản phẩm"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/products/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/products/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"1"
+					]
+				},
+				"description": "Tìm sản phẩm"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/products/1",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "id",
+						"value": "1",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "tensanpham",
+							"value": "TV Sony",
+							"type": "text"
+						},
+						{
+							"key": "gia",
+							"value": "5000000",
+							"type": "text"
+						},
+						{
+							"key": "soluong",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "hinhanh",
+							"value": "https://cdn.cellphones.com.vn/media/catalog/product/cache/7/thumbnail/300x/9df78eab33525d08d6e5fb8d27136e95/a/s/asus-ek734t__.jpg",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/products/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"3"
+					]
+				},
+				"description": "Sửa thông tin sản phẩm\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/products/addToCart/1?soluong=1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:3000/products/addToCart/1?soluong=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"addToCart",
+						"1"
+					],
+					"query": [
+						{
+							"key": "soluong",
+							"value": "5"
+						}
+					]
+				},
+				"description": "Thêm sản phẩm vào giỏ hàng"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/cart",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/cart",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cart"
+					]
+				},
+				"description": "Thông tin giỏ hàng"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
