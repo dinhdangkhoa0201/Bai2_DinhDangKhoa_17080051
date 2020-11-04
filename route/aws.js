@@ -1,17 +1,24 @@
 const AWS = require('aws-sdk');
 
-AWS.config.update({
-    region: process.env.REGION + "",
-    accessKeyId: process.env.ACCESS_KEY_ID + "",
-    secretAccessKey: process.env.SECRET_ACCESS_KEY + "",
-});
 /*AWS.config.update({
+    region: "ap-southeast-1"
+});
+
+AWS.config.getCredentials(function(err) {
+    if (err) {
+        console.log(err.stack);
+    }
+    else {
+        console.log("Access key:", AWS.config.credentials.accessKeyId);
+    }
+});
+console.log("Region: ", AWS.config.region);*/
+
+AWS.config.update({
     region: "ap-southeast-1",
-    // endpoint: "http://localhost:8000",
-    // endpoint: "http://dynamodb.us-east-1.amazonaws.com",
-    accessKeyId: "AKIASQ7E75LEB7U3XNN5",
-    secretAccessKey: "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",
-});*/
+    accessKeyId: process.env.ACCESS_KEY_ID,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY,
+});
 
 let docClient = new AWS.DynamoDB.DocumentClient();
 
@@ -105,7 +112,7 @@ function getAllProduct(res){
         TableName: "products"
     }
     docClient.scan(params, ((err, data) => {
-        if (err) {f
+        if (err) {
             console.log("err ", err);
             res.writeHead(500, { "Content-Type": "application/json" });
             res.end(JSON.stringify({ error: "Lỗi không thể truy xuất dữ liệu" }));
@@ -152,36 +159,6 @@ function getProductById(id, res){
 
         }
     })
-}
-
-function addProduct(idCart, idProduct, quality, res){
-    let params = {
-        TableName: "carts",
-        Item: {
-            idCart: idCart,
-            listProduct: [idProduct],
-            quality: quality
-        }
-    }
-
-    docClient.put(params, ((err, data) => {
-        if (err) {
-            console.log('err : ', err);
-            res.writeHead(500, {'Content-Type': 'application/json'});
-            res.end(JSON.stringify({error: 'Lỗi không thể thêm sản phẩm vào giỏ hàng'}));
-        } else {
-            res.writeHead(200, {'Content-Type': 'application/json'});
-            res.end(JSON.stringify({
-                message: 'Thêm sản phẩm thành công vào giỏ hàng ', idCart,
-                product: {
-                    id: idProduct,
-                    tensanpham: tensanpham,
-                    gia: gia,
-                    soluong: soluong
-                }
-            }))
-        }
-    }))
 }
 
 module.exports = {

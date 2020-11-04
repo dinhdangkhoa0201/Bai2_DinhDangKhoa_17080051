@@ -3,20 +3,28 @@ const router = express.Router();
 
 const AWS = require('./aws');
 
-router.get('/products', ((req, res) => {
-    AWS.getAllProduct(res);
-}))
+
 
 router.get('/products/addToCart/:id', (req, res) => {
     let id = req.params.id;
     let soluong = req.query.soluong;
     res.cookie('card' + id, {
         idSanPham: id,
+        gia: '',
         soluong: soluong,
     });
     res.writeHead(200, {'Content-Type': 'application/json'});
     res.end(JSON.stringify({
-        message: 'Thêm sản phẩm ' + id +' thành công vào giỏ hàng ',
+        message: 'Thêm sản phẩm có ID : ' + id +' thành công vào giỏ hàng ',
+    }))
+})
+
+router.get('/cart/removeProduct/:id', (req, res) => {
+    let id = req.params.id;
+    res.clearCookie("card"+id);
+    res.writeHead(200, {'Content-Type': 'application/json'});
+    res.end(JSON.stringify({
+        message: 'Xoá sản phẩm có ID : ' + id +' thành công vào giỏ hàng ',
     }))
 })
 
@@ -39,6 +47,10 @@ router.post('/products/addProduct', ((req, res) => {
     console.log('id : ', id ,', tensanpham : ', tensanpham ,', gia : ', gia ,', soluong : ', soluong)
     AWS.createProduct(id, tensanpham, gia, soluong, hinhanh, res);
 }))
+
+router.get('/products', (req, res) => {
+    AWS.getAllProduct(res);
+})
 
 router.get('/products/:id', (req, res) => {
     let id = req.params.id;
